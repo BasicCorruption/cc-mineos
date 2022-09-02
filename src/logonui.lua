@@ -3,6 +3,10 @@ term.setCursorPos(1,1)
 
 local wcy = 1
 
+local _,th = term.getSize()
+local cpy = math.floor(th/2)
+wcy = cpy
+
 local function println(text)
     term.setCursorPos(1,wcy)
     term.write(text);
@@ -30,3 +34,6 @@ local function printBottom(text)
     term.write(text)
 end
 
+printBottom("MineOS v0.1.0")
+printCentered("Username: ")
+printCentered("Password: ")
