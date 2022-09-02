@@ -30,9 +30,23 @@ local function printBottom(text)
 end
 
 println("MineOS v0.1.0")
-printCentered("xx:xx")
+local function time()
+    while true do
+        printCentered(textutils.formatTime(os.time("ingame"),false))
+        sleep(0.5)
+    end
+end
+local function enter()
+    while true do
+        local event,key,held = os.pullEvent("key")
+        if key == keys.enter then
+            break
+        end
+    end
+end
 printBottom("Press enter to log in")
 
-read()
+
+parallel.waitForAny(time,enter)
 
 shell.run("logonui")
