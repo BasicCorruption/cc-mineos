@@ -8,3 +8,5 @@ local function println(text)
     term.write(text);
     wcy = wcy + 1
 end
+
+println("MineOS v0.1.0")
