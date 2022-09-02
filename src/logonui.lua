@@ -12,11 +12,12 @@ end
 local function printCentered(text)
     local w,h = term.getSize()
     local tx = math.floor(w/2 - #text/2)
-    local ty = math.floor(h/2)
+    local ty = (wcy - 1) + math.floor(h/2)
     cx = tx
     cy = ty
     term.setCursorPos(tx,ty)
     term.write(text)
+    wcy = wcy + 1
 end
 
 local function printBottom(text)
@@ -29,10 +30,3 @@ local function printBottom(text)
     term.write(text)
 end
 
-println("MineOS v0.1.0")
-printCentered("xx:xx")
-printBottom("Press enter to log in")
-
-read()
-
-shell.run("logonui")
