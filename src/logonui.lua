@@ -1,5 +1,6 @@
 term.clear()
 term.setCursorPos(1,1)
+term.setCursorBlink(false)
 
 local wcy = 1
 
@@ -16,7 +17,7 @@ end
 local function printCentered(text)
     local w,h = term.getSize()
     local tx = math.floor(w/2 - #text/2)
-    local ty = (wcy - 1) + math.floor(h/2)
+    local ty = math.floor(h/2)
     cx = tx
     cy = ty
     term.setCursorPos(tx,ty)
@@ -36,4 +37,22 @@ end
 
 printBottom("MineOS v0.1.0")
 printCentered("Username: ")
+local IUser = read()
+term.clear()
+printBottom("MineOS v0.1.0")
 printCentered("Password: ")
+local IPassword = read()
+
+-- /mineos/auth/adminpass.key
+
+local AdminPassword
+
+if fs.exists("/mineos/auth/adminpass.key") then
+    local AdminPasswordFile = fs.open("/mineos/auth/adminpass.key","r")
+    AdminPassword = AdminPasswordFile.readAll()
+    AdminPasswordFile.close()
+else
+    local FileStream = fs.open("/mineos/auth/adminpass.key", "w")
+    FileStream.write(IPassword)
+    FileStream.close()
+end

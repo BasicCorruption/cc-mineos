@@ -1,4 +1,5 @@
 term.clear()
+term.setCursorBlink(false)
 
 local cx = 1
 local cy = 1
